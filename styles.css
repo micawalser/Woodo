@@ -1086,17 +1086,36 @@ body {
     font-family: serif;
 }
 
-/* Botón blanco para la sección mission */
+/* Botón moderno para la sección mission */
 .btn-white {
-    background: var(--white);
-    color: var(--primary-green);
-    border: 2px solid var(--white);
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    color: var(--white);
+    border: 2px solid var(--primary-green);
     font-weight: 700;
     padding: var(--spacing-lg) var(--spacing-2xl);
     font-size: var(--font-size-lg);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 2px 8px rgba(0, 208, 132, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-white:hover::before {
+    left: 100%;
 }
 
 .btn-white:hover {
@@ -1104,7 +1123,9 @@ body {
     color: var(--white);
     border-color: var(--white);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 /* Services Section */
