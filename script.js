@@ -1,6 +1,15 @@
+console.log('🚀 Script.js loaded successfully!');
+
 // Configuración inicial
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 DOM loaded, setting up functions...');
+    console.log('🔍 Checking for dropdown elements...');
+    console.log('- .dropdown-toggle exists:', !!document.querySelector('.dropdown-toggle'));
+    console.log('- .dropdown-menu exists:', !!document.querySelector('.dropdown-menu'));
+    console.log('- .dropdown exists:', !!document.querySelector('.dropdown'));
+    
     setupNavigation();
+    setupDropdown();
     setupScrollAnimations();
     setupFormValidation();
     setupButtonEffects();
@@ -9,29 +18,36 @@ document.addEventListener('DOMContentLoaded', function() {
     setupParticleEffect();
     setupCodeTypingEffect();
     setupMissionTypewriter();
+    setupDynamicContactText();
 });
 
 // Navegación suave y activa
 function setupNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .dropdown-link, .logo-link');
     const sections = document.querySelectorAll('section[id]');
     
     // Navegación suave
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+            const href = this.getAttribute('href');
             
-            if (targetSection) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
+            // Solo interceptar enlaces que empiecen con # y no sean solo #
+            if (href && href.startsWith('#') && href !== '#') {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                if (targetSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
+            // Si no empieza con # o es un enlace externo, dejar que el navegador maneje el enlace normalmente
         });
     });
     
@@ -56,6 +72,113 @@ function setupNavigation() {
             }
         });
     });
+}
+
+// Configurar dropdown
+function setupDropdown() {
+    console.log('🔧 setupDropdown function called');
+    
+    // Esperar un poco para asegurar que el DOM esté completamente cargado
+    setTimeout(() => {
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdown = document.querySelector('.dropdown');
+        
+        console.log('Dropdown toggle:', dropdownToggle);
+        console.log('Dropdown menu:', dropdownMenu);
+        console.log('Dropdown container:', dropdown);
+        
+        if (dropdownToggle && dropdownMenu && dropdown) {
+            console.log('✅ Setting up dropdown with hover...');
+            
+            // Inicializar el dropdown como cerrado
+            dropdownMenu.style.display = 'none';
+            dropdownMenu.style.opacity = '0';
+            dropdownMenu.style.visibility = 'hidden';
+            dropdownMenu.style.transform = 'translateY(-10px)';
+            
+            // Función para abrir el dropdown
+            function openDropdown() {
+                dropdownMenu.style.display = 'block';
+                dropdownMenu.style.opacity = '1';
+                dropdownMenu.style.visibility = 'visible';
+                dropdownMenu.style.transform = 'translateY(0)';
+                console.log('✅ Opening dropdown (hover)');
+            }
+            
+            // Variables para manejar el delay
+            let hoverTimeout;
+            
+            // Función para cerrar el dropdown
+            function closeDropdown() {
+                dropdownMenu.style.display = 'none';
+                dropdownMenu.style.opacity = '0';
+                dropdownMenu.style.visibility = 'hidden';
+                dropdownMenu.style.transform = 'translateY(-10px)';
+                console.log('❌ Closing dropdown (hover out)');
+            }
+            
+            // Abrir dropdown al hacer hover sobre el contenedor dropdown
+            dropdown.addEventListener('mouseenter', function() {
+                console.log('🎯 Mouse entered dropdown area');
+                // Cancelar cualquier timeout pendiente
+                if (hoverTimeout) {
+                    clearTimeout(hoverTimeout);
+                    hoverTimeout = null;
+                }
+                openDropdown();
+            });
+            
+            // Cerrar dropdown al salir del hover del contenedor dropdown con delay
+            dropdown.addEventListener('mouseleave', function() {
+                console.log('🚪 Mouse left dropdown area');
+                // Agregar un pequeño delay para evitar cierres accidentales
+                hoverTimeout = setTimeout(() => {
+                    closeDropdown();
+                }, 150); // 150ms de delay
+            });
+            
+            // También mantener funcionalidad de clic para móviles
+            dropdownToggle.addEventListener('click', function(e) {
+                console.log('📱 Dropdown clicked (mobile)');
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = dropdownMenu.style.display === 'block';
+                if (isOpen) {
+                    closeDropdown();
+                } else {
+                    openDropdown();
+                }
+            });
+            
+            // Cerrar dropdown al hacer clic fuera (para móviles)
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    closeDropdown();
+                    console.log('🚪 Closing dropdown (click outside)');
+                }
+            });
+            
+            // Cerrar dropdown al hacer clic en un enlace del dropdown
+            const dropdownLinks = document.querySelectorAll('.dropdown-link');
+            console.log('🔗 Found dropdown links:', dropdownLinks.length);
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeDropdown();
+                    console.log('🔗 Closing dropdown (link clicked)');
+                });
+            });
+            
+            console.log('🎉 Dropdown setup complete with hover!');
+        } else {
+            console.error('❌ Dropdown elements not found!');
+            console.log('Available elements:');
+            console.log('- .dropdown-toggle:', document.querySelector('.dropdown-toggle'));
+            console.log('- .dropdown-menu:', document.querySelector('.dropdown-menu'));
+            console.log('- .dropdown:', document.querySelector('.dropdown'));
+        }
+    }, 100);
 }
 
 // Efectos de botones
@@ -429,14 +552,20 @@ function setupParticleEffect() {
 // Efecto del header al hacer scroll
 function setupHeaderScrollEffect() {
     const header = document.querySelector('.header');
+    const nav = document.querySelector('.nav');
     
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    // Usar header si existe, sino usar nav
+    const targetElement = header || nav;
+    
+    if (targetElement) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                targetElement.classList.add('scrolled');
+            } else {
+                targetElement.classList.remove('scrolled');
+            }
+        });
+    }
 }
 
 // Inicializar efectos adicionales
@@ -446,6 +575,46 @@ document.addEventListener('DOMContentLoaded', function() {
     setupLazyLoading();
     // setupParticleEffect(); // Descomenta si quieres el efecto de partículas
 });
+
+// Efecto de texto dinámico en la sección de contacto
+function setupDynamicContactText() {
+    const dynamicWordElement = document.querySelector('.dynamic-word');
+    if (!dynamicWordElement) return;
+    
+    const words = [
+        'modernas',
+        'eficientes', 
+        'creativas',
+        'innovadoras',
+        'profesionales',
+        'responsivas',
+        'optimizadas',
+        'dinámicas'
+    ];
+    
+    let currentWordIndex = 0;
+    
+    function changeWord() {
+        const currentWord = words[currentWordIndex];
+        dynamicWordElement.textContent = currentWord;
+        
+        // Agregar clase de animación
+        dynamicWordElement.style.animation = 'none';
+        setTimeout(() => {
+            dynamicWordElement.style.animation = 'wordChange 3s ease-in-out infinite';
+        }, 10);
+        
+        currentWordIndex = (currentWordIndex + 1) % words.length;
+    }
+    
+    // Cambiar palabra cada 8 segundos (mucho más lento)
+    setInterval(changeWord, 8000);
+    
+    // Cambiar inmediatamente después de un delay inicial
+    setTimeout(() => {
+        changeWord();
+    }, 3000);
+}
 
 // Efecto de typing en el código
 function setupCodeTypingEffect() {

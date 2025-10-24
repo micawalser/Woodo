@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woodo - Soluciones Web Modernas</title>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=13">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,11 +13,22 @@
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <img src="logo.png" alt="Woodo" class="logo">
+                <a href="#inicio" class="logo-link">
+                    <img src="public/logo.png" alt="Woodo" class="logo">
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#inicio" class="nav-link">INICIO</a></li>
-                <li><a href="#servicios" class="nav-link">SERVICIOS</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle">ACERCA DE WOODO <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                            <li><a href="por-que-elegirnos.html" class="dropdown-link">¿Por qué elegirnos?</a></li>
+                        <li><a href="#preguntas-frecuentes" class="dropdown-link">Preguntas frecuentes</a></li>
+                        <li><a href="#nuestro-proceso" class="dropdown-link">Nuestro proceso</a></li>
+                        <li><a href="#equipo" class="dropdown-link">Nuestro equipo</a></li>
+                        <li><a href="#historia" class="dropdown-link">Nuestra historia</a></li>
+                    </ul>
+                </li>
                 <li><a href="#portfolio" class="nav-link">PORTFOLIO</a></li>
                 <li><a href="#nosotros" class="nav-link">NOSOTROS</a></li>
                 <li><a href="#contacto" class="nav-link">CONTACTO</a></li>
@@ -89,7 +100,7 @@
                 </h1>
                 <p class="hero-description">
                     Soluciones web modernas y efectivas que impulsan tu negocio. 
-                    Desde sitios simples hasta sistemas complejos, todo en menos de 48 horas.
+                    Desde sitios simples hasta sistemas complejos, todo en un mismo lugar.
                 </p>
                 <div class="hero-buttons">
                     <a href="#servicios" class="btn btn-primary">VER SERVICIOS</a>
@@ -172,13 +183,6 @@
 
     <!-- Mission Section -->
     <section class="mission">
-        <!-- Elementos decorativos de fondo -->
-        <div class="mission-decorations">
-            <div class="decoration-circle decoration-1"></div>
-            <div class="decoration-circle decoration-2"></div>
-            <div class="decoration-triangle decoration-3"></div>
-            <div class="decoration-square decoration-4"></div>
-        </div>
         
         <div class="container">
             <div class="mission-content">
@@ -201,7 +205,7 @@
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <h3>Estrategia</h3>
-                        <p>Planificamos cada detalle para maximizar tu impacto digital</p>
+                        <p>Planificamos cada detalle para maximizar tu impacto digital, leemos tu mercado y definimos objetivos claros.</p>
                     </div>
                     <div class="mission-feature">
                         <div class="feature-icon">
@@ -221,14 +225,11 @@
                 
                 <div class="mission-description">
                     <p>
-                        Unimos estrategia, tecnología y creatividad para que tu marca crezca, se destaque y conecte con más personas.
+                        Estamos convencidos de que, con la estrategia digital adecuada, mensajes claros y un diseño con propósito, tu marca puede aprovechar internet mucho más de lo que hoy imaginás.
                     </p>
                 </div>
                 
                 <div class="mission-cta">
-                    <p class="mission-subtitle">
-                        Queremos que tu presencia digital sea tan fuerte como tus ideas.
-                    </p>
                     <a href="#contacto" class="btn btn-white">COMENZAR PROYECTO</a>
                 </div>
             </div>
@@ -237,68 +238,159 @@
 
     <!-- Services Section -->
     <section id="servicios" class="services">
+        <div class="services-background">
+            <div class="services-overlay"></div>
+            <!-- Elementos decorativos -->
+            <div class="services-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">NUESTROS SERVICIOS</h2>
-                <p class="section-description">Soluciones web completas para tu negocio</p>
+            <div class="services-header">
+                <div class="services-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>Servicios</span>
+                </div>
+                <h2 class="services-title">NUESTROS SERVICIOS</h2>
+                <div class="services-divider"></div>
+                <p class="services-subtitle">Soluciones web completas para tu negocio</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Sitios Web Express</h3>
+                            <p class="service-description">
+                                Sitios web profesionales listos en menos de 48 horas. 
+                                Perfectos para quienes necesitan presencia online inmediata.
+                            </p>
+                            <div class="service-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Hosting + Seguridad</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Dominio .com incluido</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Diseño responsive</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Optimización SEO</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Soporte técnico</span>
+                                </div>
+                            </div>
+                            <div class="service-price">
+                                <span class="price-currency">$</span>
+                                <span class="price-amount">80.000</span>
+                                <span class="price-period">desde</span>
+                            </div>
+                            <a href="#contacto" class="service-btn">
+                                <span>SOLICITAR</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="service-title">Sitios Web Rápidos</h3>
-                    <p class="service-description">
-                        Sitios web profesionales listos en menos de 48 horas. 
-                        Perfectos para empresas que necesitan presencia online inmediata.
-                    </p>
-                    <ul class="service-features">
-                        <li>Diseño responsive</li>
-                        <li>Optimización SEO</li>
-                        <li>Hosting incluido</li>
-                        <li>Soporte técnico</li>
-                    </ul>
-                    <div class="service-price">Desde $50.000</div>
-                    <a href="#contacto" class="btn btn-outline">SOLICITAR</a>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-card-inner">
+                        <div class="service-badge-popular">MÁS POPULAR</div>
+                        <div class="service-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Tiendas Online</h3>
+                            <p class="service-description">
+                                E-commerce completo con todas las funcionalidades necesarias 
+                                para vender online de manera efectiva.
+                            </p>
+                            <div class="service-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Hosting + Seguridad</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Dominio .com incluido</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Catálogo de productos</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Carrito de compras</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Panel administrativo</span>
+                                </div>
+                            </div>
+                            <div class="service-price">
+                                <span class="price-currency">$</span>
+                                <span class="price-amount">80.000</span>
+                                <span class="price-period">desde</span>
+                            </div>
+                            <a href="#contacto" class="service-btn">
+                                <span>SOLICITAR</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-store"></i>
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Sistemas Personalizados</h3>
+                            <p class="service-description">
+                                CRM, CRUD y sistemas de gestión desarrollados específicamente 
+                                para las necesidades de tu empresa.
+                            </p>
+                            <div class="service-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Desarrollo a medida</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Base de datos</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>API personalizada</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Integración completa</span>
+                                </div>
+                            </div>
+                            <div class="service-price">
+                                <span class="price-text">Consultar</span>
+                            </div>
+                            <a href="#contacto" class="service-btn">
+                                <span>SOLICITAR</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="service-title">Tiendas Online</h3>
-                    <p class="service-description">
-                        E-commerce completo con todas las funcionalidades necesarias 
-                        para vender online de manera efectiva.
-                    </p>
-                    <ul class="service-features">
-                        <li>Catálogo de productos</li>
-                        <li>Carrito de compras</li>
-                        <li>Pagos online</li>
-                        <li>Panel administrativo</li>
-                    </ul>
-                    <div class="service-price">Desde $80.000</div>
-                    <a href="#contacto" class="btn btn-outline">SOLICITAR</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="service-title">Sistemas Personalizados</h3>
-                    <p class="service-description">
-                        CRM, CRUD y sistemas de gestión desarrollados específicamente 
-                        para las necesidades de tu empresa.
-                    </p>
-                    <ul class="service-features">
-                        <li>Desarrollo a medida</li>
-                        <li>Base de datos</li>
-                        <li>API personalizada</li>
-                        <li>Integración completa</li>
-                    </ul>
-                    <div class="service-price">Consultar</div>
-                    <a href="#contacto" class="btn btn-outline">SOLICITAR</a>
                 </div>
             </div>
         </div>
@@ -307,9 +399,14 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">TRABAJOS RECIENTES</h2>
-                <p class="section-description">Conocé cómo trabajamos</p>
+            <div class="portfolio-header">
+                <div class="portfolio-badge">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Portfolio</span>
+                </div>
+                <h2 class="portfolio-title">TRABAJOS RECIENTES</h2>
+                <div class="portfolio-divider"></div>
+                <p class="portfolio-subtitle">Conocé cómo trabajamos</p>
             </div>
             
             <div class="portfolio-grid">
@@ -390,6 +487,164 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Segunda fila de proyectos -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3 class="placeholder-title">App Móvil</h3>
+                                <p class="placeholder-description">Aplicación móvil nativa con diseño intuitivo y funcionalidades avanzadas</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Móvil</span>
+                                    <span class="tag">Nativa</span>
+                                    <span class="tag">UI/UX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">App Móvil</h3>
+                                <p class="portfolio-description">Aplicación móvil nativa</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h3 class="placeholder-title">Dashboard Analytics</h3>
+                                <p class="placeholder-description">Panel de control con métricas en tiempo real y reportes personalizados</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Analytics</span>
+                                    <span class="tag">Dashboard</span>
+                                    <span class="tag">Tiempo Real</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">Dashboard Analytics</h3>
+                                <p class="portfolio-description">Panel de control avanzado</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="placeholder-title">Plataforma Educativa</h3>
+                                <p class="placeholder-description">Sistema de aprendizaje online con cursos interactivos y seguimiento de progreso</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Educación</span>
+                                    <span class="tag">Online</span>
+                                    <span class="tag">Interactivo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">Plataforma Educativa</h3>
+                                <p class="portfolio-description">Sistema de aprendizaje online</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tercera fila de proyectos -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h3 class="placeholder-title">Sistema Médico</h3>
+                                <p class="placeholder-description">Gestión hospitalaria completa con historiales médicos y citas online</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Salud</span>
+                                    <span class="tag">Gestión</span>
+                                    <span class="tag">Seguro</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">Sistema Médico</h3>
+                                <p class="portfolio-description">Gestión hospitalaria completa</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3 class="placeholder-title">App de Transporte</h3>
+                                <p class="placeholder-description">Plataforma de movilidad urbana con geolocalización y pagos integrados</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Transporte</span>
+                                    <span class="tag">GPS</span>
+                                    <span class="tag">Pagos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">App de Transporte</h3>
+                                <p class="portfolio-description">Plataforma de movilidad urbana</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <div class="placeholder-content">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3 class="placeholder-title">Delivery de Comida</h3>
+                                <p class="placeholder-description">Sistema de pedidos online con seguimiento en tiempo real y múltiples restaurantes</p>
+                                <div class="placeholder-tags">
+                                    <span class="tag">Delivery</span>
+                                    <span class="tag">Comida</span>
+                                    <span class="tag">Multi-restaurante</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">Delivery de Comida</h3>
+                                <p class="portfolio-description">Sistema de pedidos online</p>
+                                <a href="#" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -433,61 +688,57 @@
 
     <!-- Contact Section -->
     <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">CONTACTANOS</h2>
-                <p class="section-description">¿Listo para comenzar tu proyecto?</p>
+        <div class="contact-background">
+            <div class="contact-overlay"></div>
+            <!-- Formas geométricas animadas -->
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
             </div>
             
+        <div class="container">
             <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div class="contact-details">
-                            <h3>Teléfono</h3>
-                            <p>+54 9 11 1234-5678</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>hola@woodo.com.ar</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-details">
-                            <h3>Ubicación</h3>
-                            <p>Buenos Aires, Argentina</p>
-                        </div>
+                <div class="contact-text">
+                    <h2 class="contact-title">Diseñamos páginas web</h2>
+                    <h3 class="contact-dynamic-text">
+                        <span class="dynamic-word">modernas</span>
+                    </h3>
+                    <div class="contact-arrow">
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
                 
-                <form class="contact-form">
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Consultanos ahora:</h3>
+                    </div>
+                    
+                    <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                            <input type="text" id="name" name="name" placeholder="Nombre (*)" required>
+                    </div>
+                        <div class="form-row">
+                    <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Teléfono (*)" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Tu email" required>
+                                <input type="email" id="email" name="email" placeholder="Email (*)" required>
+                            </div>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+                            <textarea id="message" name="message" placeholder="Mensaje" rows="4"></textarea>
                     </div>
-                    <div class="form-group">
-                        <select id="service" name="service" required>
-                            <option value="">Selecciona un servicio</option>
-                            <option value="sitio-web">Sitio Web Rápido</option>
-                            <option value="tienda-online">Tienda Online</option>
-                            <option value="sistema-personalizado">Sistema Personalizado</option>
-                            <option value="consulta">Consulta General</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">ENVIAR MENSAJE</button>
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            ENVIAR
+                        </button>
                 </form>
+                </div>
             </div>
         </div>
     </section>
@@ -497,7 +748,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="logo.png" alt="Woodo" class="footer-logo">
+                    <img src="public/logo.png" alt="Woodo" class="footer-logo">
                     <p class="footer-description">
                         Soluciones web modernas y efectivas para tu negocio.
                     </p>
