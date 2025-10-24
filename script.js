@@ -591,7 +591,7 @@ function setupDynamicContactText() {
         'dinámicas'
     ];
     
-    let currentWordIndex = 0;
+    let currentWordIndex = 1; // Empezar desde "eficientes" ya que "modernas" ya está en el HTML
     
     function changeWord() {
         const currentWord = words[currentWordIndex];
@@ -612,10 +612,7 @@ function setupDynamicContactText() {
     // Cambiar palabra cada 4 segundos
     setInterval(changeWord, 4000);
     
-    // Cambiar inmediatamente después de un delay inicial
-    setTimeout(() => {
-        changeWord();
-    }, 1000);
+    // No ejecutar inmediatamente, dejar que empiece con "modernas" que ya está en el HTML
 }
 
 // Efecto de typing en el código
