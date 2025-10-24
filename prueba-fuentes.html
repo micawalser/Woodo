@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Fuentes - Woodo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Montserrat:wght@300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Impact&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #70e974;
+            --white: #ffffff;
+            --black: #000000;
+            --dark-bg: #0a0a0a;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            padding: 2rem;
+            margin: 0;
+        }
+        
+        .font-test {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+        
+        .font-name {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .title-test {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            text-shadow: 
+                1px 1px 0px rgba(0, 0, 0, 0.3),
+                -1px -1px 0px rgba(0, 0, 0, 0.3);
+        }
+        
+        .highlight {
+            color: var(--primary-green);
+            text-shadow: 
+                2px 2px 0px rgba(0, 0, 0, 0.5),
+                -2px -2px 0px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(112, 233, 116, 0.3);
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-top: 1rem;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prueba de Fuentes para Woodo</h1>
+    
+    <div class="font-test">
+        <div class="font-name">1. BEBAS NEUE PRO BOLD</div>
+        <div class="title-test" style="font-family: 'Bebas Neue', sans-serif;">
+            Transformamos <span class="highlight">Ideas</span> en <span class="highlight">Realidad Digital</span>
+        </div>
+        <div class="description">Estructura limpia y condensada. Disponible gratis en Google Fonts. Ideal para títulos grandes y agencias.</div>
+    </div>
+    
+    <div class="font-test">
+        <div class="font-name">2. ANTON</div>
+        <div class="title-test" style="font-family: 'Anton', sans-serif;">
+            Transformamos <span class="highlight">Ideas</span> en <span class="highlight">Realidad Digital</span>
+        </div>
+        <div class="description">Sans serif condensada, con peso muy alto y bordes rectos. Disponible en Google Fonts. Se usa mucho en sitios minimalistas o de marketing.</div>
+    </div>
+    
+    <div class="font-test">
+        <div class="font-name">3. LEAGUE SPARTAN</div>
+        <div class="title-test" style="font-family: 'League Spartan', sans-serif;">
+            Transformamos <span class="highlight">Ideas</span> en <span class="highlight">Realidad Digital</span>
+        </div>
+        <div class="description">Muy fuerte y con estética branding agency, letras anchas y limpias. Perfecta si querés lograr ese mismo impacto.</div>
+    </div>
+    
+    <div class="font-test">
+        <div class="font-name">4. MONTSERRAT EXTRA BOLD</div>
+        <div class="title-test" style="font-family: 'Montserrat', sans-serif; font-weight: 900;">
+            Transformamos <span class="highlight">Ideas</span> en <span class="highlight">Realidad Digital</span>
+        </div>
+        <div class="description">Más redondeada, pero si se ajusta el tracking (espaciado), puede dar un resultado muy similar. También de Google Fonts.</div>
+    </div>
+    
+    <div class="font-test">
+        <div class="font-name">5. IMPACT</div>
+        <div class="title-test" style="font-family: 'Impact', sans-serif;">
+            Transformamos <span class="highlight">Ideas</span> en <span class="highlight">Realidad Digital</span>
+        </div>
+        <div class="description">Versión clásica, aunque más tosca. Tiene el mismo grosor, pero el interletrado es más cerrado.</div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 3rem; color: #666;">
+        <p>Para cambiar la fuente en tu sitio, edita la variable <code>--font-title</code> en el archivo styles.css</p>
+        <p>Ejemplo: <code>--font-title: 'Bebas Neue', sans-serif;</code></p>
+    </div>
+</body>
+</html>
+
