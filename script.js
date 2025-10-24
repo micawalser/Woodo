@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupHeaderScrollEffect();
     setupParticleEffect();
     setupCodeTypingEffect();
+    setupMissionTypewriter();
 });
 
 // Navegación suave y activa
@@ -491,4 +492,83 @@ function setupCodeTypingEffect() {
     
     // Iniciar después de un delay
     setTimeout(typeText, 1000);
+}
+
+// Efecto de máquina de escribir para "potenciamos negocios"
+function setupMissionTypewriter() {
+    const highlightElement = document.querySelector('.mission-highlight');
+    if (!highlightElement) return;
+    
+    const originalText = highlightElement.textContent;
+    highlightElement.textContent = ''; // Empezar vacío
+    highlightElement.style.opacity = '0.7'; // Hacer más sutil hasta que comience
+    
+    let charIndex = 0;
+    let isTyping = true;
+    let animationActive = true;
+    let hasStarted = false;
+    
+    function typeMissionText() {
+        if (!animationActive) return;
+        
+        // Marcar que ha comenzado y hacer visible
+        if (!hasStarted) {
+            hasStarted = true;
+            highlightElement.style.opacity = '1';
+        }
+        
+        if (charIndex < originalText.length) {
+            highlightElement.textContent += originalText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeMissionText, 200); // Velocidad más lenta
+        } else {
+            // Después de escribir todo, esperar más tiempo
+            setTimeout(() => {
+                if (animationActive) {
+                    isTyping = false;
+                    deleteMissionText();
+                }
+            }, 4000); // Pausa más larga
+        }
+    }
+    
+    function deleteMissionText() {
+        if (!animationActive) return;
+        
+        if (charIndex > 0) {
+            highlightElement.textContent = originalText.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(deleteMissionText, 80); // Borrado más lento
+        } else {
+            // Después de borrar todo, esperar más tiempo antes de repetir
+            setTimeout(() => {
+                if (animationActive) {
+                    isTyping = true;
+                    typeMissionText();
+                }
+            }, 2000); // Pausa más larga antes de repetir
+        }
+    }
+    
+    // Iniciar cuando la sección sea completamente visible
+    const missionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasStarted) {
+                console.log('🎯 Animación de máquina de escribir iniciada!');
+                setTimeout(typeMissionText, 300); // Delay inicial más corto
+                missionObserver.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.6, // La sección debe estar 60% visible
+        rootMargin: '0px 0px -50px 0px' // Trigger cuando esté más arriba
+    });
+    
+    missionObserver.observe(highlightElement);
+    
+    // Detener la animación después de 30 segundos para que no sea molesta
+    setTimeout(() => {
+        animationActive = false;
+        highlightElement.textContent = originalText; // Mostrar texto completo
+    }, 30000);
 }
