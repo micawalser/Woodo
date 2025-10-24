@@ -583,7 +583,6 @@ function setupDynamicContactText() {
     
     const words = [
         'modernas',
-        'eficientes', 
         'creativas',
         'innovadoras',
         'profesionales',
@@ -596,24 +595,27 @@ function setupDynamicContactText() {
     
     function changeWord() {
         const currentWord = words[currentWordIndex];
-        dynamicWordElement.textContent = currentWord;
         
-        // Agregar clase de animación
-        dynamicWordElement.style.animation = 'none';
+        // Agregar efecto de desvanecimiento suave
+        dynamicWordElement.style.opacity = '0';
+        dynamicWordElement.style.transform = 'translateY(10px)';
+        
         setTimeout(() => {
-            dynamicWordElement.style.animation = 'wordChange 3s ease-in-out infinite';
-        }, 10);
+            dynamicWordElement.textContent = currentWord;
+            dynamicWordElement.style.opacity = '1';
+            dynamicWordElement.style.transform = 'translateY(0)';
+        }, 200);
         
         currentWordIndex = (currentWordIndex + 1) % words.length;
     }
     
-    // Cambiar palabra cada 8 segundos (mucho más lento)
-    setInterval(changeWord, 8000);
+    // Cambiar palabra cada 4 segundos
+    setInterval(changeWord, 4000);
     
     // Cambiar inmediatamente después de un delay inicial
     setTimeout(() => {
         changeWord();
-    }, 3000);
+    }, 1000);
 }
 
 // Efecto de typing en el código

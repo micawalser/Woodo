@@ -1995,13 +1995,12 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: wordChange 8s ease-in-out infinite;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* animation: wordChange 4s ease-in-out infinite; */
 }
 
 @keyframes wordChange {
-    0%, 40% { opacity: 1; transform: translateY(0); }
-    45%, 55% { opacity: 0; transform: translateY(-20px); }
-    60%, 80% { opacity: 1; transform: translateY(0); }
+    0%, 80% { opacity: 1; transform: translateY(0); }
     85%, 95% { opacity: 0; transform: translateY(-20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
