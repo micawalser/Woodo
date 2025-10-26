@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCodeTypingEffect();
     setupMissionTypewriter();
     setupDynamicContactText();
+    setupFAQAccordion();
+    setupFAQDArkAccordion();
 });
 
 // Navegación suave y activa
@@ -739,4 +741,85 @@ function setupMissionTypewriter() {
         animationActive = false;
         highlightElement.textContent = originalText; // Mostrar texto completo
     }, 30000);
+}
+
+// FAQ Accordion
+function setupFAQAccordion() {
+    console.log('Setting up FAQ Accordion...');
+    const faqItems = document.querySelectorAll('.faq-item');
+    console.log('Found FAQ items:', faqItems.length);
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const icon = item.querySelector('.faq-icon');
+        
+        question.addEventListener('click', function() {
+            console.log('FAQ item clicked');
+            const isActive = item.classList.contains('active');
+            
+            // Cerrar todos los otros items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherIcon = otherItem.querySelector('.faq-icon');
+                    if (otherIcon) otherIcon.textContent = '+';
+                }
+            });
+            
+            // Toggle del item actual
+            if (isActive) {
+                item.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                item.classList.add('active');
+                icon.textContent = '−';
+            }
+        });
+    });
+}
+
+// FAQ Dark Accordion
+function setupFAQDArkAccordion() {
+    console.log('Setting up FAQ Dark Accordion...');
+    const faqDarkItems = document.querySelectorAll('.faq-dark-item');
+    console.log('Found FAQ Dark items:', faqDarkItems.length);
+    
+    if (faqDarkItems.length === 0) {
+        console.error('No FAQ Dark items found! Check HTML structure.');
+        return;
+    }
+    
+    faqDarkItems.forEach((item, index) => {
+        console.log(`Setting up FAQ Dark item ${index + 1}`);
+        const question = item.querySelector('.faq-dark-question');
+        const icon = item.querySelector('.faq-dark-icon');
+        
+        if (!question || !icon) {
+            console.error(`Missing elements in FAQ Dark item ${index + 1}`);
+            return;
+        }
+        
+        question.addEventListener('click', function() {
+            console.log(`FAQ Dark item ${index + 1} clicked`);
+            const isActive = item.classList.contains('active');
+            
+            // Cerrar todos los otros items
+            faqDarkItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherIcon = otherItem.querySelector('.faq-dark-icon');
+                    if (otherIcon) otherIcon.textContent = '+';
+                }
+            });
+            
+            // Toggle del item actual
+            if (isActive) {
+                item.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                item.classList.add('active');
+                icon.textContent = '−';
+            }
+        });
+    });
 }

@@ -1,0 +1,301 @@
+/* FAQ Dark Section */
+.faq-dark {
+    padding: 80px 0;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 208, 132, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 208, 132, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 208, 132, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* Elementos decorativos verdes */
+.faq-dark-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.faq-green-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(0, 208, 132, 0.3);
+    border-radius: 50%;
+    top: 10%;
+    right: 10%;
+    animation: circleFloat 6s ease-in-out infinite;
+}
+
+.faq-green-line {
+    position: absolute;
+    width: 300px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 208, 132, 0.4), transparent);
+    top: 30%;
+    left: 5%;
+    animation: linePulse 4s ease-in-out infinite;
+}
+
+.faq-green-dots {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    right: 20%;
+}
+
+.faq-green-dots::before,
+.faq-green-dots::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 208, 132, 0.6);
+    border-radius: 50%;
+    animation: dotsFloat 3s ease-in-out infinite;
+}
+
+.faq-green-dots::before {
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.faq-green-dots::after {
+    top: 20px;
+    left: 20px;
+    animation-delay: 1.5s;
+}
+
+@keyframes circleFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+}
+
+@keyframes linePulse {
+    0%, 100% { opacity: 0.2; transform: scaleX(1); }
+    50% { opacity: 0.5; transform: scaleX(1.1); }
+}
+
+@keyframes dotsFloat {
+    0%, 100% { transform: translateY(0px); opacity: 0.4; }
+    50% { transform: translateY(-10px); opacity: 0.8; }
+}
+
+.faq-dark-header {
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.faq-dark-badge {
+    margin-bottom: 24px;
+}
+
+.faq-dark-badge span {
+    background: rgba(0, 208, 132, 0.1);
+    color: #00d084;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(0, 208, 132, 0.3);
+}
+
+.faq-dark-title {
+    font-family: 'League Spartan', 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.faq-dark-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00d084, #00a86b);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.faq-dark-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.faq-dark-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 208, 132, 0.2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.faq-dark-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 208, 132, 0.2);
+    border-color: rgba(0, 208, 132, 0.4);
+    transform: translateY(-2px);
+}
+
+.faq-dark-question {
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    background: rgba(0, 208, 132, 0.05);
+    border-radius: 8px;
+}
+
+.faq-dark-question:hover {
+    background: rgba(0, 208, 132, 0.1);
+}
+
+.faq-dark-question h3 {
+    font-family: 'League Spartan', 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    flex: 1;
+    padding-right: 16px;
+}
+
+.faq-dark-question .faq-dark-icon {
+    color: #00d084;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-dark-item.active .faq-dark-question .faq-dark-icon {
+    color: #ffffff;
+    transform: rotate(0deg);
+}
+
+.faq-dark-item.active .faq-dark-question {
+    background: rgba(0, 208, 132, 0.15);
+    border-bottom: 1px solid rgba(0, 208, 132, 0.3);
+}
+
+.faq-dark-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.faq-dark-item.active .faq-dark-answer {
+    max-height: 500px;
+    padding: 16px;
+    opacity: 1;
+}
+
+.faq-dark-answer p {
+    font-family: 'Utendo', sans-serif;
+    font-size: 16px;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.faq-dark-answer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive FAQ Dark */
+@media (max-width: 768px) {
+    .faq-dark-title {
+        font-size: 36px;
+    }
+    
+    .faq-dark-question {
+        padding: 12px;
+    }
+    
+    .faq-dark-question h3 {
+        font-size: 14px;
+    }
+    
+    .faq-dark-item.active .faq-dark-answer {
+        padding: 12px;
+    }
+    
+    .faq-green-circle {
+        width: 150px;
+        height: 150px;
+        top: 5%;
+        right: 5%;
+    }
+    
+    .faq-green-line {
+        width: 200px;
+        top: 25%;
+        left: 2%;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-dark-question {
+        padding: 10px;
+    }
+    
+    .faq-dark-question h3 {
+        font-size: 13px;
+    }
+    
+    .faq-dark-item.active .faq-dark-answer {
+        padding: 10px;
+    }
+    
+    .faq-green-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .faq-green-line {
+        width: 150px;
+    }
+}

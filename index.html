@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Woodo - Soluciones Web Modernas</title>
-    <link rel="stylesheet" href="styles.css?v=16">
+    <script>
+        // Force CSS reload
+        const link = document.querySelector('link[href*="styles.css"]');
+        if (link) {
+            link.href = link.href.split('?')[0] + '?v=' + Date.now();
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css?v=34">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -23,7 +33,7 @@
                     <a href="javascript:void(0)" class="nav-link dropdown-toggle">ACERCA DE WOODO <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
                             <li><a href="por-que-elegirnos.html" class="dropdown-link">¿Por qué elegirnos?</a></li>
-                        <li><a href="#preguntas-frecuentes" class="dropdown-link">Preguntas frecuentes</a></li>
+                        <li><a href="#faq" class="dropdown-link">Preguntas frecuentes</a></li>
                         <li><a href="#nuestro-proceso" class="dropdown-link">Nuestro proceso</a></li>
                         <li><a href="#equipo" class="dropdown-link">Nuestro equipo</a></li>
                         <li><a href="#historia" class="dropdown-link">Nuestra historia</a></li>
@@ -708,36 +718,149 @@
 
     <!-- About Section -->
     <section id="nosotros" class="about">
+        <!-- Elementos de código flotantes -->
+        <div class="about-code-elements">
+            <div class="code-element">&lt;div class="container"&gt;</div>
+            <div class="code-element">const woodo = "success";</div>
+            <div class="code-element">function create() {</div>
+            <div class="code-element">return "amazing";</div>
+            <div class="code-element">}</div>
+            <div class="code-element">npm install woodo</div>
+            <div class="code-element">git commit -m "perfect"</div>
+        </div>
+        
+        <!-- Líneas de conexión -->
+        <div class="about-connections">
+            <div class="connection-line"></div>
+            <div class="connection-line"></div>
+            <div class="connection-line"></div>
+        </div>
+        
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">¿POR QUÉ ELEGIRNOS?</h2>
-                    <p class="about-description">
-                        Somos especialistas en desarrollo web con más de 5 años de experiencia. 
-                        Nuestro enfoque se centra en crear soluciones que realmente funcionen 
-                        para tu negocio.
+                <!-- Primera sección -->
+                <div class="about-section">
+                    <div class="about-badge">
+                        <span>CREAMOS SOLUCIONES DIGITALES QUE IMPACTAN</span>
+                    </div>
+                    <h2 class="about-main-title">DESARROLLO WEB CON PROPÓSITO</h2>
+                    <p class="about-main-description">
+                        Para lograr el impacto digital que tu marca necesita, trabajamos el <strong>desarrollo web</strong> con una visión estratégica completa. Seleccionamos cuidadosamente las tecnologías más avanzadas, los colores que conectan, la arquitectura que convierte. Cada línea de código cuenta. La velocidad, experiencia de usuario, conversión... optimizamos cada aspecto técnico.
                     </p>
-                    <div class="about-features">
+                    <div class="about-cta">
+                        <a href="#portfolio" class="btn btn-outline">VER PROYECTOS</a>
+                        </div>
+                </div>
+
+                <!-- Tercera sección con enfoque en adaptabilidad -->
+                <div class="about-section about-section-image">
+                    <div class="about-text-content">
+                        <h3 class="about-image-title">Nos adaptamos a las tecnologías que requiera tu negocio</h3>
+                        <p class="about-image-description">
+                            No creamos soluciones genéricas. Analizamos tu industria, entendemos tus procesos y desarrollamos exactamente lo que necesitas. Desde sistemas simples hasta plataformas complejas, utilizamos la tecnología más adecuada para tu caso específico.
+                        </p>
+                        <div class="about-features-list">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Desarrollo rápido y eficiente</span>
+                                <span>Análisis personalizado de necesidades</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Diseño moderno y responsive</span>
+                                <span>Selección de tecnologías específicas</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Soporte técnico continuo</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Precios competitivos</span>
+                                <span>Desarrollo a medida para tu industria</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="about-image.jpg" alt="Equipo Woodo" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="faq-header">
+                <div class="faq-badge">
+                    <span>RESPUESTAS A TUS DUDAS</span>
+                </div>
+                <h2 class="faq-title">PREGUNTAS FRECUENTES</h2>
+                <div class="faq-divider"></div>
+            </div>
+            
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo ver los avances mientras desarrollan mi sitio web?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí. Durante la etapa de desarrollo, utilizamos un servidor de prueba (te brindamos un link específico) para que puedas ver el diseño web en proceso y las modificaciones generadas en la etapa de revisión.</p>
+                        <p>Dado que se trata de un servicio profesional de alta calidad, por prolijidad sólo utilizaremos el dominio real de tu empresa una vez que la web esté lista y chequeada para ser subida.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Mi nueva página web funcionará correctamente en celulares?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En Woodo utilizamos la más moderna tecnología responsive ("adaptativa") como una característica incluida en todos nuestros diseños. Los contenidos de tu web se ajustarán automáticamente a los tamaños de diferentes dispositivos como celulares y tablets, logrando una óptima experiencia del usuario en cada caso.</p>
+                        <p>Esto constituye una muy importante ventaja competitiva online.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuánto tiempo toma desarrollar un sitio web?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nuestros sitios web express están listos en menos de 48 horas. Para proyectos más complejos como e-commerce o sistemas personalizados, el tiempo varía según la complejidad, pero siempre mantenemos una comunicación constante sobre los plazos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué incluye el servicio de hosting y dominio?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Incluimos hosting de alta velocidad, dominio .com, certificado SSL para seguridad, respaldos automáticos y soporte técnico continuo. Todo lo necesario para que tu sitio web funcione perfectamente.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Pueden ayudarme con el SEO y posicionamiento?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, todos nuestros sitios web incluyen optimización SEO básica. Para proyectos más avanzados, ofrecemos servicios especializados de posicionamiento web y estrategias de marketing digital.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué tecnologías utilizan para el desarrollo?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Utilizamos las tecnologías más modernas y adecuadas para cada proyecto: HTML5, CSS3, JavaScript, React, Node.js, bases de datos optimizadas y frameworks que garantizan velocidad y seguridad.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Ofrecen mantenimiento después de la entrega?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos soporte técnico continuo y servicios de mantenimiento para asegurar que tu sitio web siempre funcione correctamente y esté actualizado con las últimas tecnologías.</p>
+                    </div>
                 </div>
             </div>
         </div>
