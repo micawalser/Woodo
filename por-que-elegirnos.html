@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Por qué elegirnos? - Woodo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="por-que-elegirnos.css">
-    <link rel="stylesheet" href="faq-dark.css">
+    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="stylesheet" href="por-que-elegirnos.css?v=14">
+    <link rel="stylesheet" href="faq-dark.css?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +145,113 @@
                         ligado a las necesidades puntuales de su empresa.
                     </p>
                     <a href="index.html#contacto" class="feature-btn">Solicite su Presupuesto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Tecnológico -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="tech-stack-header">
+                <div class="tech-stack-badge">
+                    <i class="fas fa-tools"></i>
+                    <span>NUESTRO STACK TECNOLÓGICO</span>
+                </div>
+                <h2 class="tech-stack-title">TECNOLOGÍAS Y HERRAMIENTAS</h2>
+                <div class="tech-stack-divider"></div>
+                <p class="tech-stack-description">
+                    Trabajamos con una amplia variedad de tecnologías modernas para ofrecerte las mejores soluciones.
+                    Nos adaptamos a tus necesidades específicas.
+                </p>
+            </div>
+            
+            <div class="tech-grid">
+                <!-- Frontend -->
+                <div class="tech-card">
+                    <div class="tech-card-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="tech-skills">
+                        <div class="tech-skills-wrapper">
+                            <span class="tech-skill">HTML5</span>
+                            <span class="tech-skill">CSS3</span>
+                            <span class="tech-skill">JavaScript</span>
+                            <span class="tech-skill">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="tech-description">
+                        <p>Diseños modernos, responsivos y optimizados que funcionan perfectamente en todos los dispositivos.</p>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="tech-card">
+                    <div class="tech-card-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="tech-skills">
+                        <div class="tech-skills-wrapper">
+                            <span class="tech-skill">Python</span>
+                            <span class="tech-skill">C#</span>
+                            <span class="tech-skill">APIs REST</span>
+                            <span class="tech-skill">Arquitectura</span>
+                        </div>
+                    </div>
+                    <div class="tech-description">
+                        <p>Backends robustos, escalables y seguros con arquitectura de capas profesional.</p>
+                    </div>
+                </div>
+
+                <!-- Diseño a Medida -->
+                <div class="tech-card">
+                    <div class="tech-card-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>Diseños a Medida</h3>
+                    </div>
+                    <div class="tech-skills">
+                        <div class="tech-skills-wrapper">
+                            <span class="tech-skill">Diseño UX/UI</span>
+                            <span class="tech-skill">Prototipado</span>
+                            <span class="tech-skill">Wireframes</span>
+                            <span class="tech-skill">Branding</span>
+                        </div>
+                    </div>
+                    <div class="tech-description">
+                        <p>Cada diseño es único y está pensado específicamente para tu marca y tus objetivos.</p>
+                    </div>
+                </div>
+
+                <!-- Adaptabilidad -->
+                <div class="tech-card featured-tech">
+                    <div class="tech-card-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Adaptabilidad Total</h3>
+                    </div>
+                    <div class="tech-skills">
+                        <div class="tech-skills-wrapper">
+                            <span class="tech-skill">Aprendizaje Rápido</span>
+                            <span class="tech-skill">Flexibilidad</span>
+                            <span class="tech-skill">Tecnologías Nuevas</span>
+                            <span class="tech-skill">Solución Personalizada</span>
+                        </div>
+                    </div>
+                    <div class="tech-description">
+                        <p>¿Necesitas otra tecnología? Nos adaptamos. Nuestro enfoque es resolver tu problema con la mejor herramienta disponible, aunque no esté en nuestra lista inicial.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-cta">
+                <div class="tech-cta-content">
+                    <h3>¿Tienes una tecnología específica en mente?</h3>
+                    <p>No importa si no la mencionamos aquí. Si tienes un requerimiento particular o prefieres trabajar con ciertas tecnologías, estamos abiertos a aprender y adaptarnos a tus necesidades.</p>
+                    <a href="index.html#contacto" class="tech-cta-btn">
+                        <i class="fas fa-comments"></i>
+                        HABLEMOS DE TU PROYECTO
+                    </a>
                 </div>
             </div>
         </div>
@@ -295,5 +402,96 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <script>
+        // Animación de entrada para la sección featured
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuredSection = document.querySelector('.featured-section');
+            
+            if (featuredSection) {
+                // Crear observer para detectar cuando entra en viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-in');
+                            
+                            // Animar los elementos internos con delay
+                            const icon = entry.target.querySelector('.featured-icon');
+                            const title = entry.target.querySelector('.featured-title');
+                            const description = entry.target.querySelector('.featured-description');
+                            const btn = entry.target.querySelector('.featured-btn');
+                            
+                            if (icon) {
+                                setTimeout(() => {
+                                    icon.style.animation = 'iconFloat 3s ease-in-out infinite';
+                                }, 500);
+                            }
+                            
+                            // Remover observer después de la primera vez
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2, // Activar cuando 20% es visible
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                observer.observe(featuredSection);
+            }
+            
+            // Animación de entrada para las feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            if (featureCards.length > 0) {
+                const cardObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Delay escalonado para cada card
+                            setTimeout(() => {
+                                entry.target.classList.add('animate-in');
+                            }, index * 100); // 100ms de diferencia entre cada card
+                            
+                            cardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15, // Activar cuando 15% es visible
+                    rootMargin: '0px 0px -30px 0px'
+                });
+                
+                featureCards.forEach(card => {
+                    cardObserver.observe(card);
+                });
+            }
+            
+            // Animación de entrada para el header de tecnologías
+            const techStackHeader = document.querySelector('.tech-stack-header');
+            
+            console.log('🔍 Tech Stack Header encontrado:', !!techStackHeader);
+            
+            if (techStackHeader) {
+                // Trigger inmediatamente al cargar (para testing)
+                setTimeout(() => {
+                    console.log('✅ Activando animación del header inmediatamente');
+                    techStackHeader.classList.add('animate-in');
+                }, 100);
+                
+                // También usar intersection observer por si acaso
+                const headerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            console.log('✅ Observer también detectó header');
+                            entry.target.classList.add('animate-in');
+                            headerObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.01
+                });
+                
+                headerObserver.observe(techStackHeader);
+            }
+        });
+    </script>
 </body>
 </html>

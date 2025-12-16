@@ -21,7 +21,52 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDynamicContactText();
     setupFAQAccordion();
     setupFAQDArkAccordion();
+    setupHashScroll();
 });
+
+// Manejar scroll cuando se carga la página con un hash
+function setupHashScroll() {
+    // Esperar a que la página se cargue completamente
+    window.addEventListener('load', function() {
+        const hash = window.location.hash;
+        if (hash && hash !== '#') {
+            const targetId = hash.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Pequeño delay para asegurar que todo esté renderizado
+                setTimeout(() => {
+                    const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        }
+    });
+    
+    // También manejar si el hash cambia después de cargar
+    window.addEventListener('hashchange', function() {
+        const hash = window.location.hash;
+        if (hash && hash !== '#') {
+            const targetId = hash.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+}
 
 // Navegación suave y activa
 function setupNavigation() {
@@ -166,9 +211,21 @@ function setupDropdown() {
             const dropdownLinks = document.querySelectorAll('.dropdown-link');
             console.log('🔗 Found dropdown links:', dropdownLinks.length);
             dropdownLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    closeDropdown();
-                    console.log('🔗 Closing dropdown (link clicked)');
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Si es un enlace interno (#), esperar a que se ejecute el scroll antes de cerrar
+                    if (href && href.startsWith('#') && href !== '#') {
+                        // Pequeño delay para permitir que el scroll se ejecute
+                        setTimeout(() => {
+                            closeDropdown();
+                            console.log('🔗 Closing dropdown (link clicked)');
+                        }, 100);
+                    } else {
+                        // Para enlaces externos, cerrar inmediatamente
+                        closeDropdown();
+                        console.log('🔗 Closing dropdown (external link clicked)');
+                    }
                 });
             });
             
