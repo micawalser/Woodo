@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.woodo.com.ar/sitemap.xml
+
+# Disallow admin or private areas (if you have any in the future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all CSS and JS files
+Allow: /styles.css
+Allow: /script.js
+Allow: /por-que-elegirnos.css
+Allow: /faq-dark.css
+Allow: /*.css
+Allow: /*.js
+
+# Allow all images
+Allow: /public/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+
+
+
+

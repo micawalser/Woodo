@@ -199,34 +199,68 @@ function setupDropdown() {
                 }
             });
             
+            // Prevenir que el clic en el menú dropdown se propague y cierre el dropdown
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
             // Cerrar dropdown al hacer clic fuera (para móviles)
             document.addEventListener('click', function(e) {
-                if (!dropdown.contains(e.target)) {
-                    closeDropdown();
-                    console.log('🚪 Closing dropdown (click outside)');
+                // No cerrar si el clic es dentro del dropdown o en un enlace del dropdown
+                const isDropdownLink = e.target.closest('.dropdown-link');
+                const isInsideDropdown = dropdown.contains(e.target);
+                
+                // Solo cerrar si el clic es completamente fuera del dropdown
+                if (!isInsideDropdown && !isDropdownLink) {
+                    // Pequeño delay para asegurar que los enlaces puedan procesarse primero
+                    setTimeout(() => {
+                        closeDropdown();
+                        console.log('🚪 Closing dropdown (click outside)');
+                    }, 10);
                 }
             });
             
-            // Cerrar dropdown al hacer clic en un enlace del dropdown
+            // Manejar clics en enlaces del dropdown
             const dropdownLinks = document.querySelectorAll('.dropdown-link');
             console.log('🔗 Found dropdown links:', dropdownLinks.length);
             dropdownLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     
-                    // Si es un enlace interno (#), esperar a que se ejecute el scroll antes de cerrar
+                    // Cancelar cualquier timeout de cierre pendiente
+                    if (hoverTimeout) {
+                        clearTimeout(hoverTimeout);
+                        hoverTimeout = null;
+                    }
+                    
+                    // Detener la propagación para evitar que otros listeners interfieran
+                    e.stopPropagation();
+                    
+                    // Si es un enlace a otra página (no solo hash), permitir navegación normal
+                    if (href && !href.startsWith('#') && href !== 'javascript:void(0)') {
+                        // Para enlaces a otras páginas, cerrar el dropdown inmediatamente
+                        // pero permitir que el navegador procese la navegación
+                        closeDropdown();
+                        console.log('🔗 Closing dropdown (navigating to another page)');
+                        // No prevenir el comportamiento por defecto - dejar que navegue
+                        return true;
+                    }
+                    
+                    // Para enlaces con hash (internos), manejar el scroll y cerrar después
                     if (href && href.startsWith('#') && href !== '#') {
                         // Pequeño delay para permitir que el scroll se ejecute
                         setTimeout(() => {
                             closeDropdown();
+                            console.log('🔗 Closing dropdown (internal link clicked)');
+                        }, 200);
+                    } else {
+                        // Para otros casos, cerrar después de un pequeño delay
+                        setTimeout(() => {
+                            closeDropdown();
                             console.log('🔗 Closing dropdown (link clicked)');
                         }, 100);
-                    } else {
-                        // Para enlaces externos, cerrar inmediatamente
-                        closeDropdown();
-                        console.log('🔗 Closing dropdown (external link clicked)');
                     }
-                });
+                }, true); // Usar capture phase para que se ejecute antes que otros listeners
             });
             
             console.log('🎉 Dropdown setup complete with hover!');
