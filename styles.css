@@ -765,12 +765,13 @@ body {
 /* Mission Section */
 .mission {
     padding: var(--spacing-4xl) 0;
-    background: 
+    background-color: #1a1a1a;
+    background-image: 
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
         url('fondo.jpeg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     position: relative;
     overflow: hidden;
 }
@@ -3364,13 +3365,8 @@ html {
         padding-left: var(--spacing-md);
     }
     
-    .nav-cta .btn {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-        white-space: normal;
-        line-height: 1.2;
-        max-width: 120px;
-        text-align: center;
+    .nav-cta {
+        display: none;
     }
     
     .nav-toggle {
@@ -3386,6 +3382,10 @@ html {
     }
     .nav-toggle.is-open span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    .hero {
+        padding-top: 140px;
     }
     
     .hero-content {
@@ -3508,6 +3508,11 @@ html {
     .mission-icon i {
         font-size: var(--font-size-2xl);
     }
+    
+    .mission-cta .btn-white {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-md) var(--spacing-xl);
+    }
 }
 
 @media (max-width: 480px) {
@@ -3516,7 +3521,7 @@ html {
     }
     
     .hero {
-        padding: 100px 0 var(--spacing-2xl);
+        padding: 120px 0 var(--spacing-2xl);
     }
     
     .hero-buttons {
@@ -3563,5 +3568,10 @@ html {
     .mission-subtitle::before,
     .mission-subtitle::after {
         font-size: 2rem;
+    }
+    
+    .mission-cta .btn-white {
+        font-size: 0.8rem;
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 }
