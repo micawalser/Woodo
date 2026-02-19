@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('- .dropdown exists:', !!document.querySelector('.dropdown'));
     
     setupNavigation();
+    setupMobileMenu();
     setupDropdown();
     setupScrollAnimations();
     setupFormValidation();
@@ -22,7 +23,32 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFAQAccordion();
     setupFAQDArkAccordion();
     setupHashScroll();
+    setupPortfolioMobileTap();
 });
+
+// Portfolio en móvil: primer toque muestra overlay (texto + botón), segundo toque o botón va al enlace
+function setupPortfolioMobileTap() {
+    const links = document.querySelectorAll('.portfolio-link');
+    if (!links.length) return;
+    
+    function isMobile() {
+        return window.matchMedia('(max-width: 768px)').matches;
+    }
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!isMobile()) return;
+            
+            if (this.classList.contains('overlay-visible')) {
+                // Segundo toque (o toque en el botón): dejar que el enlace funcione
+                return;
+            }
+            // Primer toque: mostrar overlay y no ir al enlace
+            e.preventDefault();
+            this.classList.add('overlay-visible');
+        });
+    });
+}
 
 // Manejar scroll cuando se carga la página con un hash
 function setupHashScroll() {
@@ -65,6 +91,52 @@ function setupHashScroll() {
                 });
             }
         }
+    });
+}
+
+// Menú móvil (hamburguesa) - panel lateral
+function setupMobileMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.getElementById('navOverlay');
+    if (!navToggle || !navMenu) return;
+    
+    function closeMenu() {
+        navMenu.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        if (navOverlay) navOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+    
+    function openMenu() {
+        navMenu.classList.add('is-open');
+        navToggle.classList.add('is-open');
+        if (navOverlay) {
+            navOverlay.classList.add('is-open');
+            navOverlay.setAttribute('aria-hidden', 'false');
+        }
+        document.body.style.overflow = 'hidden';
+    }
+    
+    navToggle.addEventListener('click', function() {
+        if (navMenu.classList.contains('is-open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMenu);
+    }
+    
+    // Cerrar menú al hacer clic en un enlace (navegación móvil)
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link, .nav-menu .dropdown-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMenu();
+            if (navOverlay) navOverlay.setAttribute('aria-hidden', 'true');
+        });
     });
 }
 

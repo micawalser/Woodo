@@ -163,6 +163,7 @@
             </div>
         </nav>
     </header>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
@@ -243,26 +244,21 @@
                                 <span class="code-keyword">const</span> 
                                 <span class="code-variable">woodo</span> 
                                 <span class="code-operator">=</span> 
-                                <span class="code-string">'</span><span class="code-text typing-text"></span><span class="code-cursor">|</span><span class="code-string">'</span>
+                                <span class="code-string">'</span><span class="code-text">realidad digital</span><span class="code-string">';</span>
                             </div>
+                            <div class="code-line"></div>
                             <div class="code-line">
                                 <span class="code-keyword">function</span> 
-                                <span class="code-function">transformIdeas</span><span class="code-bracket">()</span> <span class="code-bracket">{</span>
+                                <span class="code-function">transformIdeas</span><span class="code-bracket">(</span><span class="code-parameter">ideas</span><span class="code-bracket">)</span> <span class="code-bracket">{</span>
                             </div>
                             <div class="code-line indent">
                                 <span class="code-keyword">return</span> 
-                                <span class="code-variable">ideas</span><span class="code-operator">.</span><span class="code-function">map</span><span class="code-bracket">(</span>
-                            </div>
-                            <div class="code-line indent-2">
-                                <span class="code-parameter">idea</span> <span class="code-operator">=></span> 
-                                <span class="code-string">'</span><span class="code-text">realidad digital</span><span class="code-string">'</span>
-                            </div>
-                            <div class="code-line indent">
-                                <span class="code-bracket">)</span>
+                                <span class="code-variable">ideas</span><span class="code-operator">.</span><span class="code-function">map</span><span class="code-bracket">(</span><span class="code-parameter">idea</span> <span class="code-operator">=></span> <span class="code-string">'realidad digital'</span><span class="code-bracket">);</span>
                             </div>
                             <div class="code-line">
                                 <span class="code-bracket">}</span>
                             </div>
+                            <div class="code-line"></div>
                             <div class="code-line">
                                 <span class="code-comment">// Resultado: ¡Éxito garantizado!</span>
                             </div>
@@ -905,15 +901,5 @@
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/5491124751509?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">¡Escribinos por WhatsApp!</span>
-    </a>
 </body>
 </html>
