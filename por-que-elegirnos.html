@@ -26,12 +26,12 @@
                     <a href="javascript:void(0)" class="nav-link dropdown-toggle">ACERCA DE WOODO <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="por-que-elegirnos.html" class="dropdown-link">¿Por qué elegirnos?</a></li>
+                        <li><a href="index.html#servicios" class="dropdown-link">Precios</a></li>
                         <li><a href="index.html#preguntas-frecuentes" class="dropdown-link">Preguntas frecuentes</a></li>
                         <li><a href="index.html#nuestro-proceso" class="dropdown-link">Nuestro proceso</a></li>
                     </ul>
                 </li>
                 <li><a href="index.html#portfolio" class="nav-link">PORTFOLIO</a></li>
-                <li><a href="index.html#nosotros" class="nav-link">NOSOTROS</a></li>
                 <li><a href="index.html#contacto" class="nav-link">CONTACTO</a></li>
             </ul>
             <div class="nav-cta">
@@ -663,32 +663,34 @@
                 });
             }
             
-            // Animación de entrada para el header de tecnologías
+            // Animación de entrada para el header de tecnologías (al hacer scroll)
             const techStackHeader = document.querySelector('.tech-stack-header');
-            
-            console.log('🔍 Tech Stack Header encontrado:', !!techStackHeader);
-            
             if (techStackHeader) {
-                // Trigger inmediatamente al cargar (para testing)
-                setTimeout(() => {
-                    console.log('✅ Activando animación del header inmediatamente');
-                    techStackHeader.classList.add('animate-in');
-                }, 100);
-                
-                // También usar intersection observer por si acaso
                 const headerObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            console.log('✅ Observer también detectó header');
                             entry.target.classList.add('animate-in');
                             headerObserver.unobserve(entry.target);
                         }
                     });
-                }, {
-                    threshold: 0.01
-                });
-                
+                }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
                 headerObserver.observe(techStackHeader);
+            }
+            
+            // Animación de entrada para las tech cards (al hacer scroll, sobre todo en móvil)
+            const techCards = document.querySelectorAll('.tech-card');
+            if (techCards.length > 0) {
+                const techCardObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add('animate-in');
+                            }, index * 80);
+                            techCardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+                techCards.forEach(card => techCardObserver.observe(card));
             }
             
             // Animación de entrada para los pasos del proceso

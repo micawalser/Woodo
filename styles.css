@@ -725,6 +725,7 @@ body {
     margin-bottom: var(--spacing-sm);
 }
 
+
 .stat-label {
     font-size: var(--font-size-lg);
     font-weight: 600;
@@ -3407,13 +3408,17 @@ html {
         margin-top: var(--spacing-2xl);
     }
     
+    .stats {
+        padding: var(--spacing-lg) 0;
+    }
+    
     .stats-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-sm);
     }
     
     .stat-item {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
     
     .stat-number {
@@ -3444,6 +3449,12 @@ html {
     .about-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
+    }
+    
+    .about-badge span {
+        white-space: nowrap;
+        font-size: clamp(0.5rem, 2.5vw, 0.75rem);
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
     
     .contact-content {

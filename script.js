@@ -130,10 +130,11 @@ function setupMobileMenu() {
         navOverlay.addEventListener('click', closeMenu);
     }
     
-    // Cerrar menú al hacer clic en un enlace (navegación móvil)
+    // Cerrar menú al hacer clic en un enlace (navegación móvil). No cerrar si es el toggle del dropdown.
     const navLinks = document.querySelectorAll('.nav-menu .nav-link, .nav-menu .dropdown-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
+            if (link.classList.contains('dropdown-toggle')) return; // el dropdown maneja su propio clic
             closeMenu();
             if (navOverlay) navOverlay.setAttribute('aria-hidden', 'true');
         });
@@ -227,6 +228,7 @@ function setupDropdown() {
             
             // Variables para manejar el delay
             let hoverTimeout;
+            let openedByTap = false;
             
             // Función para cerrar el dropdown
             function closeDropdown() {
@@ -234,34 +236,37 @@ function setupDropdown() {
                 dropdownMenu.style.opacity = '0';
                 dropdownMenu.style.visibility = 'hidden';
                 dropdownMenu.style.transform = 'translateY(-10px)';
-                console.log('❌ Closing dropdown (hover out)');
             }
             
-            // Abrir dropdown al hacer hover sobre el contenedor dropdown
-            dropdown.addEventListener('mouseenter', function() {
-                console.log('🎯 Mouse entered dropdown area');
-                // Cancelar cualquier timeout pendiente
-                if (hoverTimeout) {
-                    clearTimeout(hoverTimeout);
-                    hoverTimeout = null;
-                }
-                openDropdown();
-            });
+            // Solo usar hover en desktop (en móvil el mouseleave se dispara tras el toque y cierra el dropdown)
+            function isMobileView() {
+                return window.matchMedia('(max-width: 768px)').matches;
+            }
             
-            // Cerrar dropdown al salir del hover del contenedor dropdown con delay
-            dropdown.addEventListener('mouseleave', function() {
-                console.log('🚪 Mouse left dropdown area');
-                // Agregar un pequeño delay para evitar cierres accidentales
-                hoverTimeout = setTimeout(() => {
-                    closeDropdown();
-                }, 150); // 150ms de delay
-            });
+            if (!isMobileView()) {
+                dropdown.addEventListener('mouseenter', function() {
+                    if (hoverTimeout) {
+                        clearTimeout(hoverTimeout);
+                        hoverTimeout = null;
+                    }
+                    openDropdown();
+                });
+                dropdown.addEventListener('mouseleave', function() {
+                    hoverTimeout = setTimeout(() => {
+                        closeDropdown();
+                    }, 150);
+                });
+            }
             
-            // También mantener funcionalidad de clic para móviles
+            // Clic en el toggle: en móvil abre/cierra; en desktop también por si acaso
             dropdownToggle.addEventListener('click', function(e) {
-                console.log('📱 Dropdown clicked (mobile)');
                 e.preventDefault();
                 e.stopPropagation();
+                
+                if (isMobileView()) {
+                    openedByTap = true;
+                    setTimeout(() => { openedByTap = false; }, 400);
+                }
                 
                 const isOpen = dropdownMenu.style.display === 'block';
                 if (isOpen) {
@@ -271,23 +276,18 @@ function setupDropdown() {
                 }
             });
             
-            // Prevenir que el clic en el menú dropdown se propague y cierre el dropdown
             dropdownMenu.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
             
-            // Cerrar dropdown al hacer clic fuera (para móviles)
+            // Cerrar al hacer clic fuera (con cuidado en móvil para no cerrar por el mismo tap)
             document.addEventListener('click', function(e) {
-                // No cerrar si el clic es dentro del dropdown o en un enlace del dropdown
-                const isDropdownLink = e.target.closest('.dropdown-link');
-                const isInsideDropdown = dropdown.contains(e.target);
+                if (isMobileView() && openedByTap) return;
                 
-                // Solo cerrar si el clic es completamente fuera del dropdown
-                if (!isInsideDropdown && !isDropdownLink) {
-                    // Pequeño delay para asegurar que los enlaces puedan procesarse primero
+                const isInsideDropdown = dropdown.contains(e.target);
+                if (!isInsideDropdown) {
                     setTimeout(() => {
                         closeDropdown();
-                        console.log('🚪 Closing dropdown (click outside)');
                     }, 10);
                 }
             });

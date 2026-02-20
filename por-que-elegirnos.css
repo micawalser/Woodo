@@ -421,11 +421,11 @@
     display: inline-block;
     background: var(--primary-green);
     color: var(--white);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--border-radius-md);
     text-decoration: none;
     font-weight: 600;
-    font-size: var(--font-size-sm);
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: var(--transition-normal);
@@ -477,46 +477,72 @@
     .featured-section {
         flex-direction: column;
         text-align: center;
-        padding: var(--spacing-xl);
-        gap: var(--spacing-lg);
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-2xl);
     }
     
     .featured-icon {
-        width: 100px;
-        height: 100px;
+        width: 64px;
+        height: 64px;
         margin: 0 auto;
     }
     
+    .featured-icon i {
+        font-size: var(--font-size-xl);
+    }
+    
     .featured-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-sm);
     }
     
     .featured-description {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-sm);
+        line-height: 1.5;
         text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .featured-section .featured-btn {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
     
     .features-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
     
     .feature-card {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
     }
     
     .feature-icon {
-        width: 70px;
-        height: 70px;
+        width: 52px;
+        height: 52px;
+        margin-bottom: var(--spacing-sm);
     }
     
-    .feature-title {
+    .feature-icon i {
         font-size: var(--font-size-lg);
     }
     
+    .feature-title {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-sm);
+    }
+    
     .feature-description {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
+        line-height: 1.4;
         text-align: center;
+    }
+    
+    .feature-card .feature-btn {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-sm) var(--spacing-md);
+        margin-top: var(--spacing-sm);
     }
 }
 
@@ -550,6 +576,53 @@
     
     .section-title {
         font-size: var(--font-size-xl);
+    }
+    
+    .featured-section {
+        padding: var(--spacing-sm) var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+    
+    .featured-icon {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .featured-icon i {
+        font-size: var(--font-size-lg);
+    }
+    
+    .featured-title {
+        font-size: var(--font-size-base);
+    }
+    
+    .featured-description {
+        font-size: var(--font-size-xs);
+    }
+    
+    .features-grid {
+        gap: var(--spacing-sm);
+    }
+    
+    .feature-card {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .feature-icon {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .feature-icon i {
+        font-size: var(--font-size-base);
+    }
+    
+    .feature-title {
+        font-size: 0.9rem;
+    }
+    
+    .feature-description {
+        font-size: 0.75rem;
     }
 }
 
@@ -851,6 +924,20 @@
     opacity: 1;
 }
 
+/* Animación de entrada al hacer scroll (móvil) */
+@media (max-width: 768px) {
+    .tech-card {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .tech-card.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .tech-card.featured-tech {
     background: linear-gradient(135deg, var(--white) 0%, rgba(0, 208, 132, 0.08) 100%);
     border: 2px solid var(--primary-green);
@@ -1087,33 +1174,67 @@
 
     .tech-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
 
     .tech-card {
-        padding: var(--spacing-xl);
+        padding: 0;
+    }
+
+    .tech-card-header {
+        padding: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+
+    .tech-card-header i {
+        font-size: 1.5rem;
+        width: 44px;
+        height: 44px;
     }
 
     .tech-card-header h3 {
-        font-size: var(--font-size-lg);
-    }
-
-    .tech-cta {
-        padding: var(--spacing-2xl);
-    }
-
-    .tech-cta-content h3 {
-        font-size: var(--font-size-xl);
-    }
-
-    .tech-cta-content p {
         font-size: var(--font-size-base);
     }
 
+    .tech-skills {
+        padding: var(--spacing-md);
+    }
+
+    .tech-skills .tech-skills-wrapper {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .tech-skill {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+    }
+
+    .tech-description {
+        padding: 0 var(--spacing-md) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .tech-cta {
+        padding: var(--spacing-lg);
+    }
+
+    .tech-cta-content h3 {
+        font-size: var(--font-size-lg);
+    }
+
+    .tech-cta-content p {
+        font-size: var(--font-size-sm);
+    }
+
     .tech-cta-btn {
-        flex-direction: column;
-        width: 100%;
-        max-width: 300px;
+        flex-direction: row;
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-sm) var(--spacing-md);
+        max-width: 260px;
+    }
+
+    .tech-cta-btn i {
+        font-size: var(--font-size-base);
     }
 }
 
@@ -1132,25 +1253,60 @@
     }
 
     .tech-card {
-        padding: var(--spacing-lg);
+        padding: 0;
     }
 
     .tech-card-header {
         flex-direction: column;
         text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .tech-card-header i {
+        font-size: 1.25rem;
+        width: 38px;
+        height: 38px;
+    }
+
+    .tech-card-header h3 {
+        font-size: 0.9rem;
     }
 
     .tech-skills {
+        padding: var(--spacing-sm) var(--spacing-md);
         justify-content: center;
     }
 
+    .tech-skill {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .tech-description {
+        padding: 0 var(--spacing-md) var(--spacing-sm);
+        font-size: 0.8rem;
+    }
+
+    .tech-cta {
+        padding: var(--spacing-md);
+    }
+
     .tech-cta-content h3 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-base);
+    }
+
+    .tech-cta-content p {
+        font-size: var(--font-size-xs);
     }
 
     .tech-cta-btn {
+        font-size: 0.7rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+        max-width: 220px;
+    }
+
+    .tech-cta-btn i {
         font-size: var(--font-size-sm);
-        padding: var(--spacing-md) var(--spacing-lg);
     }
 }
 
