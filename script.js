@@ -495,7 +495,7 @@ function setupFormValidation() {
     const form = document.querySelector('.contact-form');
     
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formData = new FormData(form);
@@ -511,10 +511,32 @@ function setupFormValidation() {
                 showNotification('Por favor ingresa un email válido', 'error');
                 return;
             }
-            
-            // Simular envío
-            showNotification('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
-            form.reset();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    showNotification('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
+                    form.reset();
+                } else {
+                    const err = await response.json();
+                    showNotification(err.error || 'Hubo un error al enviar. Revisá que el form tenga el ID de Formspree correcto.', 'error');
+                }
+            } catch (err) {
+                showNotification('Error de conexión. Revisá tu internet o la configuración de Formspree.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
         });
     }
 }
